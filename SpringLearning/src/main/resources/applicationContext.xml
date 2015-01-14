@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="person" class="com.example.SpringLearning.Person">
+		<property name="name" value="Sue G" />
+		<property name="gender" value="M" />
+		<property name="dob" ref="dob" />
+	</bean>
+
+	<bean id="dob" factory-bean="calendar" factory-method="getTime" />
+
+	<bean id="calendar" class="com.example.SpringLearning.CustomCalendar" factory-method="getInstance">
+		<constructor-arg index="0" value="2012" />
+		<constructor-arg index="1" value="4" />
+		<constructor-arg index="2" value="22" />
+	</bean>
+
+
+
+
+</beans>
