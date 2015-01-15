@@ -4,19 +4,32 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="person" class="com.example.SpringLearning.Person">
-		<property name="name" value="Sue G" />
-		<property name="gender" value="M" />
-		<property name="dob" ref="dob" />
+	<bean id="customBean" class="com.example.SpringLearning.CustomBean">
+		<property name="map">
+			<map>
+				<entry key="one">
+					<list>
+						<value>first value</value>
+						<value>second value</value>
+					</list>
+				</entry>
+				<entry>
+					<key>
+						<value>second value</value>
+					</key>
+					<list>
+						<value>first value</value>
+						<value>second value</value>
+					</list>
+				</entry>
+			</map>
+		</property>
 	</bean>
 
-	<bean id="dob" factory-bean="calendar" factory-method="getTime" />
-
-	<bean id="calendar" class="com.example.SpringLearning.CustomCalendar" factory-method="getInstance">
-		<constructor-arg index="0" value="2012" />
-		<constructor-arg index="1" value="4" />
-		<constructor-arg index="2" value="22" />
-	</bean>
+	<!-- <bean id="dob" factory-bean="calendar" factory-method="getTime" /> 
+		<bean id="calendar" class="com.example.SpringLearning.CustomCalendar" factory-method="getInstance"> 
+		<constructor-arg index="0" value="2012" /> <constructor-arg index="1" value="4" 
+		/> <constructor-arg index="2" value="22" /> </bean> -->
 
 
 

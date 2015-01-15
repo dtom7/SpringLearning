@@ -1,5 +1,8 @@
 package com.example.SpringLearning;
 
+import java.util.List;
+import java.util.Map.Entry;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,8 +18,10 @@ public class App {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
 		// retrieve configured instance
-		Person person = context.getBean("person", Person.class);
+		CustomBean customBean = context.getBean("customBean", CustomBean.class);
 		
-		System.out.println(person);
+		for(Entry<String, List<String>> mapEntry:customBean.getMap().entrySet()) {
+			System.out.println(mapEntry.getKey() + " -- " + mapEntry.getValue());
+		}
 	}
 }
