@@ -6,6 +6,7 @@ import java.util.Date;
 public class Person {
 	private String name; 
 	private String gender;
+	private String netid;
 	private Date dob;
 	
 	public Person() {}
@@ -51,9 +52,17 @@ public class Person {
 		this.gender = gender;
 	}
 	
+	public String getNetid() {
+		return netid;
+	}
+
+	public void setNetid(String netid) {
+		this.netid = netid;
+	}
+
 	@Override
 	public String toString() {
-		return this.name + " -- " + this.gender + " -- " + this.dob;
+		return this.name + " -- " + this.gender + " -- " + this.dob + " -- " + this.netid;
 	}
 
 }

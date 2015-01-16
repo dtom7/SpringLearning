@@ -5,15 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomBean {
-	
-	private Map<String, List<String>> map;
-
-	public Map<String, List<String>> getMap() {
-		return map;
+	/* look-up method */
+	protected PrototypeBean createPrototypeBean() {
+		return null;
 	}
-
-	public void setMap(Map<String, List<String>> map) {
-		this.map = map;
-	}
-
 }

@@ -3,35 +3,32 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-	<bean id="customBean" class="com.example.SpringLearning.CustomBean">
-		<property name="map">
-			<map>
-				<entry key="one">
-					<list>
-						<value>first value</value>
-						<value>second value</value>
-					</list>
-				</entry>
-				<entry>
-					<key>
-						<value>second value</value>
-					</key>
-					<list>
-						<value>first value</value>
-						<value>second value</value>
-					</list>
-				</entry>
-			</map>
-		</property>
+	<bean id="person" class="com.example.SpringLearning.Person"
+		autowire="constructor">
+		<constructor-arg index="0" value="Ben M" />
+		<constructor-arg index="1" value="M" />
+		<property name="netid" value="1234"></property>
 	</bean>
 
-	<!-- <bean id="dob" factory-bean="calendar" factory-method="getTime" /> 
-		<bean id="calendar" class="com.example.SpringLearning.CustomCalendar" factory-method="getInstance"> 
-		<constructor-arg index="0" value="2012" /> <constructor-arg index="1" value="4" 
-		/> <constructor-arg index="2" value="22" /> </bean> -->
+	<bean id="dob" factory-bean="calendar" factory-method="getTime" />
 
+	<bean id="calendar" class="com.example.SpringLearning.CustomCalendar"
+		factory-method="getInstance">
+		<constructor-arg index="0" value="2010" />
+		<constructor-arg index="1" value="4" />
+		<constructor-arg index="2" value="22" />
+	</bean>
 
+	<bean id="customBean" class="com.example.SpringLearning.CustomBean">
+	    <lookup-method name="createPrototypeBean" bean="prototypeBean" />
+    </bean>
+
+	<bean id="prototypeBean" class="com.example.SpringLearning.PrototypeBean" scope="prototype">
+		<property name="message" value="test message"></property>
+		<replaced-method name="getMessage" replacer="prototypeReplacementBean" />
+	</bean>
+
+	<bean id="prototypeReplacementBean" class="com.example.SpringLearning.PrototypeReplacement" />
 
 
 </beans>
