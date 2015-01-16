@@ -3,7 +3,9 @@ package com.example.SpringLearning;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Person {
+import org.springframework.beans.factory.BeanNameAware;
+
+public class Person implements BeanNameAware {
 	private String name; 
 	private String gender;
 	private String netid;
@@ -63,6 +65,12 @@ public class Person {
 	@Override
 	public String toString() {
 		return this.name + " -- " + this.gender + " -- " + this.dob + " -- " + this.netid;
+	}
+	
+    private String beanName;
+	@Override
+	public void setBeanName(String beanName) {
+		this.beanName = beanName;	
 	}
 
 }

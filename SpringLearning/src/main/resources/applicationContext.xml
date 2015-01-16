@@ -29,6 +29,8 @@
 	</bean>
 
 	<bean id="prototypeReplacementBean" class="com.example.SpringLearning.PrototypeReplacement" />
+	
+	<bean id="customBeanPostProcessor" class="com.example.SpringLearning.CustomBeanPostProcessor" />
 
 
 </beans>

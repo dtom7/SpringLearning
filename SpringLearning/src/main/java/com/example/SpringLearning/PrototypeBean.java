@@ -1,6 +1,8 @@
 package com.example.SpringLearning;
 
-public class PrototypeBean {
+import org.springframework.beans.factory.BeanNameAware;
+
+public class PrototypeBean implements BeanNameAware {
 	
 	private String message;
 
@@ -14,6 +16,12 @@ public class PrototypeBean {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+    private String beanName;
+	@Override
+	public void setBeanName(String beanName) {
+		this.beanName = beanName;	
 	}
 
 }
