@@ -4,12 +4,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class Person implements BeanNameAware {
+public class Person {
 	private String name; 
 	private String gender;
 	private String netid;
-	private Date dob;
+	//private Date dob;
 	
 	public Person() {}
 
@@ -20,14 +21,20 @@ public class Person implements BeanNameAware {
 
 		Calendar cal = Calendar.getInstance();
 		cal.set(2014, 0, 1);
-		this.dob = cal.getTime();
+		//this.dob = cal.getTime();
 	}
 
+	@Autowired
 	public Person(String name, String gender, Date dob) {
 		super();
 		this.name = name;
 		this.gender = gender;
-		this.dob = dob;
+		//this.dob = dob;
+		System.out.println("Person dob: " + dob);
+	}
+	
+	public void setDate(Date dob) {
+		System.out.println("setDate dob: " + dob);
 	}
 
 	public String getName() {
@@ -39,11 +46,12 @@ public class Person implements BeanNameAware {
 	}
 
 	public Date getDob() {
-		return dob;
+		//return dob;
+		return null;
 	}
 
 	public void setDob(Date dob) {
-		this.dob = dob;
+		//this.dob = dob;
 	}
 
 	public String getGender() {
@@ -64,13 +72,7 @@ public class Person implements BeanNameAware {
 
 	@Override
 	public String toString() {
-		return this.name + " -- " + this.gender + " -- " + this.dob + " -- " + this.netid;
-	}
-	
-    private String beanName;
-	@Override
-	public void setBeanName(String beanName) {
-		this.beanName = beanName;	
+		return this.name + " -- " + this.gender + " -- " + "" + " -- " + this.netid;
 	}
 
 }

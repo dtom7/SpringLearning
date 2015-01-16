@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="person" class="com.example.SpringLearning.Person"
-		autowire="constructor">
+    <context:annotation-config/>
+
+	<bean id="person" class="com.example.SpringLearning.Person">
 		<constructor-arg index="0" value="Ben M" />
 		<constructor-arg index="1" value="M" />
 		<property name="netid" value="1234"></property>
@@ -14,12 +19,12 @@
 
 	<bean id="calendar" class="com.example.SpringLearning.CustomCalendar"
 		factory-method="getInstance">
-		<constructor-arg index="0" value="2010" />
-		<constructor-arg index="1" value="4" />
-		<constructor-arg index="2" value="22" />
+		<constructor-arg index="0" value="2011" />
+		<constructor-arg index="1" value="5" />
+		<constructor-arg index="2" value="10" />
 	</bean>
 
-	<bean id="customBean" class="com.example.SpringLearning.CustomBean">
+	<bean id="customBean" class="com.example.SpringLearning.CustomBean" autowire="byName">
 	    <lookup-method name="createPrototypeBean" bean="prototypeBean" />
     </bean>
 
@@ -31,6 +36,8 @@
 	<bean id="prototypeReplacementBean" class="com.example.SpringLearning.PrototypeReplacement" />
 	
 	<bean id="customBeanPostProcessor" class="com.example.SpringLearning.CustomBeanPostProcessor" />
+	
+	<bean id="newBean" class="com.example.SpringLearning.CustomBeanFactory" />
 
 
 </beans>

@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
 	
 	@SuppressWarnings("resource")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// create and configure beans
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
@@ -26,12 +26,19 @@ public class App {
 		} */
 		// System.out.println(customBean.createPrototypeBean().getMessage());
 		
-		/*
+		
 		Person person = context.getBean("person", Person.class);
-		System.out.println(person); */
+		System.out.println(person.s); 
 		
 		//PrototypeBean prototypeBean = context.getBean("prototypeBean", PrototypeBean.class);
+		/*
 		System.out.println(customBean.createPrototypeBean().getMessage());
+		System.out.println("From customBean: " + customBean.getNewBean());
 		
+		CustomBeanFactory.NewBean newBean1 = (CustomBeanFactory.NewBean)context.getBean("newBean");
+		System.out.println(newBean1);
+		CustomBeanFactory newBean2 = (CustomBeanFactory)context.getBean("&newBean");
+		System.out.println(newBean2);
+		*/
 	}
 }

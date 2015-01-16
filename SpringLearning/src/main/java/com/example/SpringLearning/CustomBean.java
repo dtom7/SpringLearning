@@ -1,20 +1,19 @@
 package com.example.SpringLearning;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.BeanNameAware;
-
-public class CustomBean implements BeanNameAware {
+public class CustomBean {
 	/* look-up method */
 	protected PrototypeBean createPrototypeBean() {
 		return null;
 	}
-	
-    private String beanName;
-	@Override
-	public void setBeanName(String beanName) {
-		this.beanName = beanName;	
+
+	private CustomBeanFactory.NewBean newBean;
+
+	public CustomBeanFactory.NewBean getNewBean() {
+		return newBean;
 	}
+
+	public void setNewBean(CustomBeanFactory.NewBean newBean) {
+		this.newBean = newBean;
+	}
+
 }
