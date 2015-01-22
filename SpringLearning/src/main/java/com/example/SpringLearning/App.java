@@ -28,7 +28,7 @@ public class App {
 		
 		
 		Person person = context.getBean("person", Person.class);
-		System.out.println(person.s); 
+		System.out.println(person.getName()); 
 		
 		//PrototypeBean prototypeBean = context.getBean("prototypeBean", PrototypeBean.class);
 		/*
